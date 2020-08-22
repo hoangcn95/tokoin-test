@@ -1,5 +1,5 @@
 I. Run demo
-    docker-compose up -d
+    _ docker-compose up -d
     Add following link to postman, there are 3 API for search users, tickets, organizations
     https://www.getpostman.com/collections/42ecf95a4d33c527d8c6
 
