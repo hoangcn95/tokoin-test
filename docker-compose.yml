@@ -1,0 +1,33 @@
+version: '3'
+services:
+  web:
+    build: ./app
+    image: alpine
+    container_name: "web"
+    ports:
+        - 8080:80
+    links:
+        - mongodb
+    depends_on:
+        - mongodb
+  mongodb:
+    image: mongo:4.2
+    container_name: "mongodb"
+    ports:
+      - 27017:27017
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: Tokoin123
+    volumes:
+    - $PWD/data/mongo/db:/data/db
+  mongo-seed:
+    image: mongo:4.2
+    container_name: "mongo-seed"
+    links:
+      - mongodb
+    volumes:
+      - ./mongo-seed:/mongo-seed
+    command:
+      'bash -c  "mongoimport --host mongodb --db tokoin --collection Organizations --type json --file /mongo-seed/organizations.json --jsonArray --username root --password Tokoin123 --authenticationDatabase admin &&
+                 mongoimport --host mongodb --db tokoin --collection Tickets --type json --file /mongo-seed/tickets.json --jsonArray --username root --password Tokoin123 --authenticationDatabase admin &&
+                 mongoimport --host mongodb --db tokoin --collection Users --type json --file ./mongo-seed/users.json --jsonArray  --username root --password Tokoin123 --authenticationDatabase admin"'

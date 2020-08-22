@@ -1,0 +1,9 @@
+'tokoin':
+  name: "tokoin"
+  connection-type: "tcp"
+  address: "redis:6379"
+  password: "Tokoin!@#"
+  dbnum: 0
+  retry: 3
+  timeout: 10
+  pool-limit: 10

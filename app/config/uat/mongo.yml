@@ -1,0 +1,9 @@
+'tokoin':
+  name: 'tokoin'
+  address: 
+   - "mongodb:27017"
+  user: "root"
+  pass: "Tokoin123"
+  dbname: "tokoin"
+  timeout: 10
+  pool_limit: 100
