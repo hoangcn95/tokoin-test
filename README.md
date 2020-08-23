@@ -6,23 +6,23 @@
 **II. System describe<br/><br/>**
 &nbsp;&nbsp;&nbsp;&nbsp;Build mongodb with authentication and data sample from tickets.json, users.json, organizations.json<br/>
 &nbsp;&nbsp;&nbsp;&nbsp;Build restful API demo for search users, tickets, organizations<br/>
-&nbsp;&nbsp;&nbsp;&nbsp;There are: 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;web: contain route, middleware, handler
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;* route: define route inputs and service will be handler. Recommend designing:
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+ {{host}}/pubic-api/v1/....: Service all service for clients call (Web browser, Mobile app, Desktop app). We can use token for authentication, authorization with this group api.
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+ {{host}}/api/v1/..........: Service all service for server services call server services. We can basic-authen with this group api. In this group we should devide into two kind: one kind for Restful API, and the other kind for gRPC ( Best option using for optimize speed).
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+ {{host}}/websocket/.......: Service all socket init connection and transfer data.
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;* middleware: it's design for checking the input context is valid (Have authen, true format, set span for tracing, send logs to EFK...), checking the output is success or not ? Will cache data on RAM of go-service if success...
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;* handler: it's contain all controller business logic functions.
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;model: contain all structs of service
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;repo: contain all connections init, fetch, insert, update, delete query of all DB
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;config: contain all environment variable of three type of real environment. 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;* Dev: environment for developer test
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;* Uat: environment for QC and user test
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;* Master: environment for production
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;common: contain all libraries which are used between all micro-services. It should be stored all the public repo like: github, gitlab,.. And easily for go get and using
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;utils: contain all common functions,  which high regular using.
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;constants: define all constant, environment variables in program.
+&nbsp;&nbsp;&nbsp;&nbsp;There are:<br/> 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**web**: contain route, middleware, handler<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;* route: define route inputs and service will be handler. Recommend designing:<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+ {{host}}/pubic-api/v1/....: Service all service for clients call (Web browser, Mobile app, Desktop app). We can use token for authentication, authorization with this group api.<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+ {{host}}/api/v1/..........: Service all service for server services call server services. We can basic-authen with this group api. In this group we should devide into two kind: one kind for Restful API, and the other kind for gRPC ( Best option using for optimize speed).<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+ {{host}}/websocket/.......: Service all socket init connection and transfer data.<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;* middleware: it's design for checking the input context is valid (Have authen, true format, set span for tracing, send logs to EFK...), checking the output is success or not ? Will cache data on RAM of go-service if success...<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;* handler: it's contain all controller business logic functions.<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**model**: contain all structs of service<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**repo**: contain all connections init, fetch, insert, update, delete query of all DB<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**config**: contain all environment variable of three type of real environment. <br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;* Dev: environment for developer test<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;* Uat: environment for QC and user test<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;* Master: environment for production<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**common**: contain all libraries which are used between all micro-services. It should be stored all the public repo like: github, gitlab,.. And easily for go get and using<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**utils**: contain all common functions,  which high regular using.<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**constants**: define all constant, environment variables in program.<br/>
 
 **III. Optimize note<br/><br/>**
 * Deploy on k8s for optimize: <br/>
