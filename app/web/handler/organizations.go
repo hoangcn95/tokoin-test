@@ -31,7 +31,7 @@ func (organizationsHandler) Search(c echo.Context) (err error) {
 	}
 	type myRequest struct {
 		Term  string `json:"term" query:"term" validate:"required"`
-		Value string `json:"value" query:"value" validate:"required"`
+		Value string `json:"value" query:"value"`
 	}
 	request := new(myRequest)
 	if err = c.Bind(request); err != nil {

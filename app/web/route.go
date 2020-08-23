@@ -9,7 +9,8 @@ import (
 
 func route(e *echo.Echo) {
 	API := groute.APIRoute(e)
-	API.GET("/users/search", handler.UsersHandler.Search)
-	API.GET("/tickets/search", handler.TicketsHandler.Search)
-	API.GET("/organizations/search", handler.OrganizationsHandler.Search)
+	APIv1 := API.Group("/v1")
+	APIv1.GET("/users/search", handler.UsersHandler.Search)
+	APIv1.GET("/tickets/search", handler.TicketsHandler.Search)
+	APIv1.GET("/organizations/search", handler.OrganizationsHandler.Search)
 }
